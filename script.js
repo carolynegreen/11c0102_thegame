@@ -1,3 +1,7 @@
+"use strict";
+const player = document.querySelector("#player1");
+const computer = document.querySelector("#player2");
+
 window.addEventListener("load", start);
 function start() {
   console.log("start game");
@@ -20,8 +24,8 @@ function showRock() {
 //paper//
 function showPaper() {
   console.log("paper");
-  document.querySelector("#player1").classList.remove(".player.rock");
-  document.querySelector("#player1").classList.add(".player.paper");
+  document.querySelector("#player1").classList.remove("player.rock");
+  document.querySelector("#player1").classList.add("player.paper");
 }
 //scissors//
 function showScissors() {
@@ -31,6 +35,9 @@ function showScissors() {
 }
 
 //get computers choice//
+function randomSelection() {
+  const randomIndex = Math.floor(Math.random() * something.length);
+}
 
 function gameWin() {
   console.log("you win");
