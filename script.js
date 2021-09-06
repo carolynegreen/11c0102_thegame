@@ -1,28 +1,27 @@
 "use strict";
 const player = document.querySelector("#player1");
 const computer = document.querySelector("#player2");
-const possibleChoices = document.querySelectorAll("button");
 let userChoice;
 let computerChoice;
 let result;
 
-//window.addEventListener("DOMContentLoaded", start);
-//console.log("start game");
+console.log("start game");
 
 //gets users choice
-possibleChoices.forEach((possibleChoices) =>
-  possibleChoices.addEventListener("click", (e) => {
-    userChoice = e.target.id;
-    console.log(userChoice);
-    generateComputerChoice();
-    getResults();
-  })
-);
+function generatePlayerChoice() {
+  document.querySelector(".rock").addEventListener("click", showHands()){
+    userChoice = "rock";
+  };
+  document.querySelector(".paper").addEventListener("click", showHands());
+  document.querySelector(".scissors").addEventListener("click", showHands());
+  console.log(userChoice);
+  generateComputerChoice();
+  getResults();
+}
 
 //get computers choice//
 function generateComputerChoice() {
   const randomNumber = Math.floor(Math.random() * possibleChoices.length);
-  console.log(randomNumber);
   console.log(computerChoice);
 
   if (randomNumber === 0) {
