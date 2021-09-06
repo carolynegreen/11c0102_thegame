@@ -1,51 +1,62 @@
 "use strict";
+const player = document.querySelector("#player1");
+const computer = document.querySelector("#player2");
+const possibleChoices = document.querySelectorAll("button");
+let userChoice;
+let computerChoice;
+let result;
 
-window.addEventListener("load", start);
-function start() {
-  console.log("start game");
-  getChoice();
-}
+//window.addEventListener("DOMContentLoaded", start);
+//console.log("start game");
 
-//get players choice//
-function getChoice() {
-  document.querySelector(".rock").addEventListener("click", showRock);
-  document.querySelector(".paper").addEventListener("click", showPaper);
-  document.querySelector(".scissors").addEventListener("click", showScissors);
-}
-
-//rock//
-function showRock() {
-  console.log("rock");
-  document.querySelector("#player1").classList.remove(".player.rock");
-  document.querySelector("#player1").classList.add(".player.rock");
-}
-//paper//
-function showPaper() {
-  console.log("paper");
-  document.querySelector("#player1").classList.remove("player.rock");
-  document.querySelector("#player1").classList.add("player.paper");
-}
-//scissors//
-function showScissors() {
-  console.log("scissors");
-  document.querySelector("#player1").classList.remove(".player.rock");
-  document.querySelector("#player1").classList.add(".player.scissors");
-}
+//gets users choice
+possibleChoices.forEach((possibleChoices) =>
+  possibleChoices.addEventListener("click", (e) => {
+    userChoice = e.target.id;
+    console.log(userChoice);
+    generateComputerChoice();
+    getResults();
+  })
+);
 
 //get computers choice//
-function randomSelection() {
-  const randomIndex = Math.floor(Math.random() * something.length);
+function generateComputerChoice() {
+  const randomNumber = Math.floor(Math.random() * possibleChoices.length);
+  console.log(randomNumber);
+  console.log(computerChoice);
+
+  if (randomNumber === 0) {
+    computerChoice = "rock";
+  }
+  if (randomNumber === 1) {
+    computerChoice = "paper";
+  }
+  if (randomNumber === 2) {
+    computerChoice = "scissors";
+  }
 }
 
-function gameWin() {
-  console.log("you win");
-  document.querySelector("#win").classList.remove("hidden");
-}
-function gameLose() {
-  console.log("you lose");
-  document.querySelector("#lose").classList.remove("hidden");
-}
-function gameDraw() {
-  console.log("its a draw");
-  document.querySelector("#draw").classList.remove("hidden");
+function getResults() {
+  if (computerChoice === userChoice) {
+    result = "its a draw";
+  }
+  if (computerChoice === "rock" && userChoice == "paper") {
+    result = "you win";
+  }
+  if (computerChoice === "rock" && userChoice == "scissors") {
+    result = "you lose";
+  }
+  if (computerChoice === "paper" && userChoice == "scissors") {
+    result = "you win";
+  }
+  if (computerChoice === "paper" && userChoice == "rock") {
+    result = "you lose";
+  }
+  if (computerChoice === "scissors" && userChoice == "rock") {
+    result = "you win";
+  }
+  if (computerChoice === "scissors" && userChoice == "paper") {
+    result = "you lose";
+  }
+  console.log(result);
 }
