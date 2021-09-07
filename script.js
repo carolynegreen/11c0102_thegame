@@ -88,19 +88,28 @@ function showAnimations() {
     document.querySelector("#player2").classList.remove("shake");
     document.querySelector("#player2").classList.add("scissors");
   }
+  getResults();
 }
 
 function getResults() {
-  //console.log(`and the winner is ${winner}`)
   if (computerChoice === userChoice) {
     winner = "none";
   }
   if (userChoice === "rock" && computerChoice === "scissors") {
     winner = "player";
   }
+  if (userChoice === "rock" && computerChoice === "paper") {
+    winner = "computer";
+  }
 
   if (winner === "player") {
     setTimeout(showWin, 500);
+  }
+  if (winner === "none") {
+    setTimeout(showDraw, 500);
+  }
+  if (winner === "computer") {
+    setTimeout(showLose, 500);
   }
 }
 
@@ -108,4 +117,29 @@ function showWin() {
   console.log("You Win");
   document.querySelector("#win").classList.remove("hidden");
   setTimeout(clear, 1500);
+}
+
+function showDraw() {
+  console.log("It's a tie");
+  document.querySelector("#draw").classList.remove("hidden");
+  setTimeout(clear, 1500);
+}
+
+function showLose() {
+  console.log("You lose");
+  document.querySelector("#lose").classList.remove("hidden");
+  setTimeout(clear, 1500);
+}
+
+function clear() {
+  document.querySelector("#draw").classList.add("hidden");
+  document.querySelector("#win").classList.add("hidden");
+  document.querySelector("#lose").classList.add("hidden");
+
+  document
+    .querySelector("#player2")
+    .classList.remove("paper", "scissors", "rock");
+  document
+    .querySelector("#player1")
+    .classList.remove("paper", "scissors", "rock");
 }
