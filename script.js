@@ -101,6 +101,18 @@ function getResults() {
   if (userChoice === "rock" && computerChoice === "paper") {
     winner = "computer";
   }
+  if (userChoice === "paper" && computerChoice === "rock") {
+    winner = "player";
+  }
+  if (userChoice === "paper" && computerChoice === "scissors") {
+    winner = "computer";
+  }
+  if (userChoice === "scissors" && computerChoice === "paper") {
+    winner = "player";
+  }
+  if (userChoice === "scissors" && computerChoice === "rock") {
+    winner = "computer";
+  }
 
   if (winner === "player") {
     setTimeout(showWin, 500);
